@@ -1,0 +1,28 @@
+<div class="root">
+
+  <h1>Boiler Plate's root component</h1>
+
+  <p class="error" *ngFor = "let error of errors">
+    {{error}}
+  </p>
+
+  <form (submit)="postForm()">
+    <input type="text" name="title" [(ngModel)]="newTask.title">
+    <input type="text" name="description" [(ngModel)]="newTask.description">
+    <button type="submit">Submit a new task</button>
+  </form>
+  {{newTask | json}}
+
+  <button (click)="getTasks()">Click me to get all tasks</button>
+  <ul>
+    <li *ngFor="let task of tasks">
+      {{task.title}}
+      <button (click)="showTaskInfo(task)"> Something better</button>
+    </li>
+    
+
+  </ul>
+
+  <app-showtask *ngIf="selectedTask" [showtask]="selectedTask"></app-showtask>
+
+</div>
